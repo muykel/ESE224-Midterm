@@ -14,8 +14,11 @@ public:
     string getpassword();
     int getmaxcopies();
     int getmaxborrowperiod();
+    vector<Book> getcopies();
     void setusername(string a);
     void setpassword(string a);
+    void borrowbooks(int id);
+    void returnbooks(int id);
     void requestCopy(long int isbn, string title, string author, string category);
     void deleteCopy(int id);
     void operator <<(string file_name, Student& s);

@@ -34,6 +34,9 @@ int Teacher::getmaxcopies() {
 int Teacher::getmaxborrowperiod() {
         return maxBorrowPeriod;
 }
+vector<Book> Teacher::getcopies() {
+        return copies;
+}
 
 // Mutators
 void Teacher::setusername(string a) {

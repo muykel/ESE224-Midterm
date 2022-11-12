@@ -31,6 +31,9 @@ int Student::getmaxcopies() {
 int Student::getmaxborrowperiod() {
         return maxBorrowPeriod;
 }
+vector<Book> Student::getcopies() {
+        return copies;
+}
 
 // Mutators
 void Student::setusername(string a) {
@@ -40,8 +43,30 @@ void Student::setpassword(string a) {
         password = a;
 }
 
-// borrowBooks();
-// returnBooks();
+void Student::borrowbooks(int id) {
+        // Checking for overdue copies
+        for(int i = 0; i < int(copies.size()) - 1; i++) {
+                if(copies[i].getenddate()) {
+                        break;
+                        cout << "You are unable to check out a new book. "
+                             << "A book is currently overdue." << endl;
+                }
+        }
+
+        // Check to see if at max number of copies
+        if(int(copies.size()) > maxCopies) {
+                cout << "You are unable to check out a new book."
+                     << "You are at max number of copies." << endl;
+        }
+
+        // Check to see if the book is already checked out
+
+        // Adding to copies
+        copies.push_back(Book()); // ?
+}
+// void Student::returnbooks(int id) {
+//         copies.erase();
+// }
 
 // Overloading operators
 void operator <<(string file_name, Student& s) { // file_name << t1
