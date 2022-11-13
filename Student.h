@@ -22,6 +22,6 @@ public:
     void returnbooks(int id);
     void requestCopy(long int isbn, string title, string author, string category);
     void deleteCopy(int id);
-    void operator <<(string file_name, Student& s);
-    Student operator >>(string file_name, Student& s);
+    void operator <<( Student& s);
+    Student operator >>( Student& s);
 };
