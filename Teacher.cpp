@@ -11,6 +11,7 @@ Teacher::Teacher() {
         maxCopies = 10;
         maxBorrowPeriod = 50;
         vector<Book> copies;
+        vector<Book> borrows;
 }
 
 Teacher::Teacher(string u, string p) {
@@ -19,6 +20,7 @@ Teacher::Teacher(string u, string p) {
         maxCopies = 10;
         maxBorrowPeriod = 50;
         vector<Book> copies;
+        vector<Book> borrows;
 }
 
 // Accessors
@@ -36,6 +38,9 @@ int Teacher::getmaxborrowperiod() {
 }
 vector<Book> Teacher::getcopies() {
         return copies;
+}
+vector<Book> Teacher::getborrows() {
+        return borrows;
 }
 
 // Mutators
@@ -56,16 +61,16 @@ void Teacher::requestcopy(long int isbn, string title, string author, string cat
 }
 void Teacher::deletecopy(int id) {
         int pos = binarySearch(copies, 0, int(copies.size()) - 1, id);
-        copies.erase(pos);
+        copies.erase(copies.begin() + pos);
 }
 
 // Overloading operators
-void operator <<(string file_name, Teacher& t1) { // file_name << t1
+void operator <<(Teacher& t1) { // file_name << t1
         ofstream fout(file_name, ios::app);
         fout << "1\t" << t1.getusername() << "\t" << t1.getpassword() << endl;
         fout.close();
 }
-Teacher operator >>(string file_name, Teacher& t1) { // file_name >> t1
+Teacher operator >>(Teacher& t1) { // file_name >> t1
         ifstream fin(file_name);
         int n;
         string username, password;

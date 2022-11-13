@@ -8,6 +8,7 @@ Student::Student() {
         maxCopies = 5;
         maxBorrowPeriod = 30;
         vector<Book> copies;
+        vector<Book> borrows;
 }
 
 Student::Student(string u, string p) {
@@ -16,6 +17,7 @@ Student::Student(string u, string p) {
         maxCopies = 5;
         maxBorrowPeriod = 30;
         vector<Book> copies;
+        vector<Book> borrows;
 }
 
 // Accessors
@@ -34,6 +36,9 @@ int Student::getmaxborrowperiod() {
 vector<Book> Student::getcopies() {
         return copies;
 }
+vector<Book> Teacher::getborrows() {
+        return borrows;
+}
 
 // Mutators
 void Student::setusername(string a) {
@@ -45,36 +50,33 @@ void Student::setpassword(string a) {
 
 void Student::borrowbooks(int id) {
         // Checking for overdue copies
-        for(int i = 0; i < int(copies.size()) - 1; i++) {
-                if(copies[i].getenddate()) {
-                        break;
-                        cout << "You are unable to check out a new book. "
+        for(int i = 0; i < int(borrows.size()); i++) {
+                if(borrows[i].getenddate()) {
+                        cout << "You are unable to check out a new book."
                              << "A book is currently overdue." << endl;
                 }
         }
 
         // Check to see if at max number of copies
-        if(int(copies.size()) > maxCopies) {
+        if(int(borrows.size()) > maxCopies) {
                 cout << "You are unable to check out a new book."
                      << "You are at max number of copies." << endl;
         }
 
-        // Check to see if the book is already checked out
-
         // Adding to copies
-        copies.push_back(Book()); // ?
+        borrows.push_back(Book());
 }
-// void Student::returnbooks(int id) {
-//         copies.erase();
-// }
+void Student::returnbooks(int id) {
+        // borrows.erase(5);
+}
 
 // Overloading operators
-void operator <<(string file_name, Student& s) { // file_name << t1
+void operator <<(Student& s) { // file_name << t1
         ofstream fout(file_name, ios::app);
         fout << "1\t" << s.getusername() << "\t" << s.getpassword() << endl;
         fout.close();
 }
-Student operator >>(string file_name, Student& s) { // file_name >> t1
+Student operator >>(Student& s) { // file_name >> t1
         ifstream fin(file_name);
         int n;
         string username, password;

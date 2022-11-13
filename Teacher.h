@@ -7,7 +7,7 @@ class Teacher
 private:
 string username, password;
 static int maxCopies, maxBorrowPeriod;
-vector<Book> copies;
+vector<Book> copies, borrows;
 public:
 Teacher();
 Teacher(string u, string p);

@@ -6,7 +6,7 @@ class Student {
 private:
     string username, password;
     static int maxCopies, maxBorrowPeriod;
-    vector<Book> copies;
+    vector<Book> copies, borrows;
 public:
     Student();
     Student(string u, string p);
@@ -15,6 +15,7 @@ public:
     int getmaxcopies();
     int getmaxborrowperiod();
     vector<Book> getcopies();
+    vector<Book> getborrows();
     void setusername(string a);
     void setpassword(string a);
     void borrowbooks(int id);
