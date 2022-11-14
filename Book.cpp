@@ -50,3 +50,7 @@ string Book::getauthor() {
 string Book::getreader() {
         return reader;
 }
+
+void Book::setID(int a) {
+        id = a;
+}
