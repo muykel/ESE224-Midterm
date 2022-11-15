@@ -82,30 +82,27 @@ void Teacher::deletecopy(int id) {
 }
 
 // Overloading operators
-void operator <<(Teacher& t1) { // file_name << t1
-        ofstream fout(file_name, ios::app);
-        fout << "1\t" << t1.getusername() << "\t" << t1.getpassword() << endl;
-        fout.close();
+ostream& operator <<(ostream& output, Teacher& t) {
+        cout << "Information about the teacher read in..." << endl;
+        cout << "1\t" << t.getusername() << "\t" << t.getpassword() << endl;
+        return output;
 }
-Teacher operator >>(Teacher& t1) { // file_name >> t1
-        ifstream fin(file_name);
+
+istream& operator >>(istream& input, Teacher &t) {
         int n;
         string username, password;
-        fin >> n >> username >> password;
-        cout << "Reading a teacher from: " << file_name << endl;
-
-        fin >> n >> username >> password;
+        input >> n >> username >> password;
+        cout << "Reading all Teachers from input:" << endl;
+        input >> n >> username >> password;
         while (!fin.eof()) {
-                if (n) { // Only return if the person is a teacher.
-                        t1.setusername(username);
-                        t1.setpassword(password);
-                        return t1;
+                if (n && t.getusername() == username && t.getpassword() == password) {
+                        cout << "Teacher has been found in the input file!" << endl;
+                        return input;
                 }
-                fin >> n >> username >> password;
+                input >> n >> username >> password;
         }
-
-        fin.close();
-        return t1;
+        cout << "Teacher has not been found in the input file!" << endl;
+        return input;
 }
 
 // Binary Search (copies vector is sorted?)

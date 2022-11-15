@@ -72,30 +72,27 @@ void Student::returnbooks(int id) {
 }
 
 // Overloading operators
-void operator <<(Student&s) { // file_name << t1
-        ofstream fout(file_name, ios::app);
-        fout << "1\t" << s.getusername() << "\t" << s.getpassword() << endl;
-        fout.close();
+ostream& operator <<(ostream& output, Student& s) {
+        cout << "Information about the student read in..." << endl;
+        cout << "0\t" << s.getusername() << "\t" << s.getpassword() << endl;
+        return output;
 }
-Student operator >>(Student &s) { // file_name >> t1
-        ifstream fin(file_name);
+
+istream& operator >>(istream& input, Student &s) {
         int n;
         string username, password;
-        fin >> n >> username >> password;
-        cout << "Reading a Student from: " << file_name << endl;
-
-        fin >> n >> username >> password;
+        input >> n >> username >> password;
+        cout << "Reading all Students from input:" << endl;
+        input >> n >> username >> password;
         while (!fin.eof()) {
-                if (!n) { // Only return if the person is a student.
-                        s.setusername(username);
-                        s.setpassword(password);
-                        return s;
+                if (!n && s.getusername() == username && s.getpassword() == password) {
+                        cout << "Student has been found in the input file!" << endl;
+                        return input;
                 }
-                fin >> n >> username >> password;
+                input >> n >> username >> password;
         }
-
-        fin.close();
-        return s;
+        cout << "Student has not been found in the input file!" << endl;
+        return input;
 }
 
 // Binary Search (copies vector is sorted?)
