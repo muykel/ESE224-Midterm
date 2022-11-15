@@ -40,13 +40,13 @@ int main() {
         // istream = ?
         if(n) {
                 // Testing functions for student and teacher
-                Teacher t1 = new Teacher(user, pass);
+                Teacher t1(user, pass);
                 // istream >> t1;
                 t1.setusername("username12345");
                 t1.setpassword("password12345");
                 // istream << t1;
         } else {
-                Student s1 = new Student(user, pass);
+                Student s1(user, pass);
                 // istream >> s1;
                 s1.setusername("username12345");
                 s1.setpassword("password12345");
