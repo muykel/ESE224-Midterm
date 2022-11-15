@@ -91,7 +91,6 @@ ostream& operator <<(ostream& output, Teacher& t) {
 istream& operator >>(istream& input, Teacher &t) {
         int n;
         string username, password;
-        input >> n >> username >> password;
         cout << "Reading all Teachers from input:" << endl;
         input >> n >> username >> password;
         while (!fin.eof()) {
