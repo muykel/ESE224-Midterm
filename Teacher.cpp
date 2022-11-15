@@ -93,7 +93,7 @@ istream& operator >>(istream& input, Teacher &t) {
         string username, password;
         cout << "Reading all Teachers from input:" << endl;
         input >> n >> username >> password;
-        while (!fin.eof()) {
+        while (!input.eof()) {
                 if (n && t.getusername() == username && t.getpassword() == password) {
                         cout << "Teacher has been found in the input file!" << endl;
                         return input;

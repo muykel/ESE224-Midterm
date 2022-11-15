@@ -81,10 +81,9 @@ ostream& operator <<(ostream& output, Student& s) {
 istream& operator >>(istream& input, Student &s) {
         int n;
         string username, password;
-        input >> n >> username >> password;
         cout << "Reading all Students from input:" << endl;
         input >> n >> username >> password;
-        while (!fin.eof()) {
+        while (!input.eof()) {
                 if (!n && s.getusername() == username && s.getpassword() == password) {
                         cout << "Student has been found in the input file!" << endl;
                         return input;
