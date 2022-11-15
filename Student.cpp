@@ -1,9 +1,8 @@
 #include "Student.h"
-#include "Teacher.h"
 
 using namespace std;
 
-int binarySearch(vector<Book> copies, int l, int r, int x);
+int binarySearch1(vector<Book> copies, int l, int r, int x);
 
 Student::Student() {
         username = "N/A";
@@ -39,7 +38,7 @@ int Student::getmaxborrowperiod() {
 vector<Book> Student::getcopies() {
         return copies;
 }
-vector<Book> Teacher::getborrows() {
+vector<Book> Student::getborrows() {
         return borrows;
 }
 
@@ -67,7 +66,7 @@ void Student::borrowbooks(int id) {
         borrows.push_back(b1);
 }
 void Student::returnbooks(int id) {
-        int pos = binarySearch(borrows, 0, int(borrows.size()) - 1, id);
+        int pos = binarySearch1(borrows, 0, int(borrows.size()) - 1, id);
         borrows.erase(borrows.begin() + pos);
 }
 
@@ -78,7 +77,7 @@ ostream& operator <<(ostream& output, Student& s) {
         return output;
 }
 
-istream& operator >>(istream& input, Student &s) {
+istream& operator >>(istream& input, Student& s) {
         int n;
         string username, password;
         cout << "Reading all Students from input:" << endl;
@@ -95,15 +94,15 @@ istream& operator >>(istream& input, Student &s) {
 }
 
 // Binary Search (copies vector is sorted?)
-int binarySearch(vector<Book> copies, int l, int r, int x) {
+int binarySearch1(vector<Book> copies, int l, int r, int x) {
         if (r >= l) {
                 int mid = l + (r - l) / 2;
                 if (copies[mid].getID() == x) {
                         return mid;
                 }
                 if (copies[mid].getID() > x)
-                        return binarySearch(copies, l, mid - 1, x);
-                return binarySearch(copies, mid + 1, r, x);
+                        return binarySearch1(copies, l, mid - 1, x);
+                return binarySearch1(copies, mid + 1, r, x);
         }
         return -1; // Element does not exist.
 }

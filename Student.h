@@ -3,7 +3,7 @@
 class Student {
 private:
 string username, password;
-static int maxCopies, maxBorrowPeriod;
+int maxCopies, maxBorrowPeriod;
 vector<Book> copies, borrows;
 public:
 Student();
