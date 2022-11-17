@@ -11,7 +11,7 @@ int main() {
         cout << "Current time is:  ";
         auto givetime = chrono::system_clock::to_time_t(chrono::system_clock::now());
         cout << ctime(&givetime) << endl;
-        cout << givetime;
+        // cout << givetime;
 
         // Checking to see if both book.txt and student.txt files exist and
         // we get no errors opening them.
@@ -38,19 +38,59 @@ int main() {
         cin >> user >> pass;
         // Create istream here
         // istream = ?
-        if(n) {
-                // Testing functions for student and teacher
+        string perms;
+        if(n) { // Testing functions for student and teacher
+
+                perms = "Teacher";
                 Teacher t1(user, pass);
                 // istream >> t1;
-                t1.setusername("username12345");
-                t1.setpassword("password12345");
+                // t1.setusername("username12345");
+                // t1.setpassword("password12345");
                 // istream << t1;
         } else {
+                perms = "Student";
                 Student s1(user, pass);
                 // istream >> s1;
-                s1.setusername("username12345");
-                s1.setpassword("password12345");
+                // s1.setusername("username12345");
+                // s1.setpassword("password12345");
                 // istream << s1;
+        }
+
+        cout << "Welcome back, " << perms << endl;
+
+        int inp;
+        while(1) {
+                cout << "What would you like to do?" << endl;
+                cout << "1 -- Search Book" << endl;
+                cout << "2 -- Borrow Book" << endl;
+                cout << "3 -- Return Book" << endl;
+                cout << "4 -- Request Copy (Teachers only)" << endl;
+                cout << "5 -- Delete copy (Teachers only)" << endl;
+                cout << "0 -- Log out" << endl;
+                cin >> inp;
+                switch(inp) {
+                case 0:
+                        cout << "Logging out...";
+                        exit(1);
+                case 1:
+                        //
+                        break;
+                case 2:
+                        //
+                        break;
+                case 3:
+                        //
+                        break;
+                case 4:
+                        //
+                        break;
+                case 5:
+                        //
+                        break;
+                default:
+                        cout << "Option not found. Exiting program.";
+                        exit(1);
+                }
         }
 
         return 0;
