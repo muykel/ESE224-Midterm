@@ -91,29 +91,33 @@ bool fileHandle(string file_name, string input, int indicator) {
                 switch(indicator) {
                 case 1:
                         if(b == input) {
+                                cout << "The book was found!" << endl;
                                 fin.close();
                                 return true;
                         }
                         break;
                 case 2:
                         if(c == input) {
+                                cout << "The book was found!" << endl;
                                 fin.close();
                                 return true;
                         }
                 case 3:
                         if(a == stol(input)) {
+                                cout << "The book was found!" << endl;
                                 fin.close();
                                 return true;
                         }
                 case 4:
                         if(a == stoi(input)) {
+                                cout << "The book was found!" << endl;
                                 fin.close();
                                 return true;
                         }
-                default: exit(1);
                 }
                 fin >> a >> b >> c >> d >> e;
         }
         fin.close();
+        cout << "The book was not found! :(" << endl;
         return false;
 }

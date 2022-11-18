@@ -68,6 +68,7 @@ int main() {
                         exit(1);
                 }
                 case 1: { // Search book
+                        Book b1;
                         int inp2;
                         cout << "How would you like to search for a book?" << endl;
                         cout << "1 - via title" << endl;
@@ -75,7 +76,6 @@ int main() {
                         cout << "3 - via ISBN" << endl;
                         cout << "4 - via ID" << endl;
                         cin >> inp2;
-                        Book b1;
                         switch(inp2) {
                         case 1: {
                                 string ti;
