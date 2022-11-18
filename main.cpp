@@ -151,6 +151,7 @@ int main() {
                                 cin >> category1;
 
                                 t1.requestcopy(isbn1, title1, author1, category1);
+                                cout << "Copy has been requested." << endl;
                         } else {
                                 cout << "No permission." << endl;
                         }
@@ -162,6 +163,7 @@ int main() {
                                 cout << "Enter the ID of the copy to delete." << endl;
                                 cin >> inp5;
                                 t1.deletecopy(inp5);
+                                cout << "Copy has been deleted." << endl;
                         } else {
                                 cout << "No permission." << endl;
                         }
