@@ -2,6 +2,8 @@
 
 using namespace std;
 
+bool fileHandle(string file_name, string input, int indicator);
+
 // Default constructor
 Book::Book() {
         isbn = 0;
@@ -51,6 +53,67 @@ string Book::getreader() {
         return reader;
 }
 
+// Setters
 void Book::setID(int a) {
         id = a;
+}
+void Book::setTitle(string a) {
+        title = a;
+}
+void Book::setAuthor(string a) {
+        author = a;
+}
+void Book::setISBN(long int a) {
+        isbn = a;
+}
+
+// Search functions
+bool Book::searchTitle(string file_name, string input) { // 1
+        return fileHandle(file_name, input, 1);
+}
+bool Book::searchAuthor(string file_name, string input) { // 2
+        return fileHandle(file_name, input, 2);
+}
+bool Book::searchISBN(string file_name, long int input) { // 3
+        return fileHandle(file_name, to_string(input), 3);
+}
+bool Book::searchID(string file_name, int input) { // 3
+        return fileHandle(file_name, to_string(input), 4);
+}
+
+bool fileHandle(string file_name, string input, int indicator) {
+        ifstream fin(file_name);
+        long int a;
+        string b, c, d;
+        int e;
+        fin >> a >> b >> c >> d >> e;
+        while(!fin.eof()) {
+                switch(indicator) {
+                case 1:
+                        if(b == input) {
+                                fin.close();
+                                return true;
+                        }
+                        break;
+                case 2:
+                        if(c == input) {
+                                fin.close();
+                                return true;
+                        }
+                case 3:
+                        if(a == stol(input)) {
+                                fin.close();
+                                return true;
+                        }
+                case 4:
+                        if(a == stoi(input)) {
+                                fin.close();
+                                return true;
+                        }
+                default: exit(1);
+                }
+                fin >> a >> b >> c >> d >> e;
+        }
+        fin.close();
+        return false;
 }
